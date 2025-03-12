@@ -118,6 +118,9 @@
 
     <h2>תוצאה:</h2>
     <div id="content"></div>
+    
+    <!-- כפתור העתק -->
+    <button id="copyButton" style="margin-top: 1rem;">העתק</button>
   </div>
 
   <script>
@@ -188,6 +191,18 @@
       } else {
         displayProcessedText(text);
       }
+    });
+
+    // פונקציה להעתקת הטקסט המעובד
+    document.getElementById("copyButton").addEventListener("click", function() {
+      const textToCopy = document.getElementById("content").innerText;
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+          alert("הטקסט הועתק בהצלחה!");
+        })
+        .catch(err => {
+          alert("שגיאה בהעתקה: " + err);
+        });
     });
   </script>
 </body>
